@@ -7,9 +7,9 @@ feature 'user can list a space' do
     fill_in 'price', with: 20
     fill_in 'address', with: '13 London street'
     click_button('Submit')
-    expect('page').to have_content('A nice place')
-    expect('page').to have_content('very big lots of space')
-    expect('page').to have_content(20)
-    expect('page').to have_content('13 London street')
+    expect(page).to have_content('A nice place')
+    expect(page).to have_content('very big lots of space')
+    expect(page).to have_content(20)
+    expect(page).to have_content('13 London street')
   end
 end
