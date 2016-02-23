@@ -66,6 +66,9 @@ class MakersBnB < Sinatra::Base
   end
 
   get '/update_space' do
+    @space_id = params[:space_id]
+    @space = Space.find(id: @space_id)
+    puts @space
     erb :update_space
   end
 

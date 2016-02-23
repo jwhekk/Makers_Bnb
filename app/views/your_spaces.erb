@@ -1,23 +1,29 @@
+
 <h1>Your spaces</h1>
 
 <% if @user_space %>
 
 <ul id='spaces_list'>
 
-<li> <% @user_space.each do |space| %>
-
-  Name: <%= space.name %><br>
+ <% @user_space.each do |space| %>
+<li>
+<p>  Name: <%= space.name %><br>
   Description: <%= space.description %><br>
   Price:<%= space.price %><br>
   Street:<%= space.street %><br>
   City:<%= space.city %><br>
-  <% end %>
+  <form action=/update_space>
+    <input type='hidden' name= 'space_id' value= '<%= space.id %>'>
+    <input type='submit' value= 'Edit'>
+  </form>
+
+</p>
 </li>
+  <% end %>
 </ul>
 
 <% else %>
-
+.
 Add a place!
 
 <% end %>
-
