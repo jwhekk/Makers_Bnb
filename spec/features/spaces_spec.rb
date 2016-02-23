@@ -6,13 +6,13 @@ feature 'user can list a space' do
     fill_in 'description', with: 'very big lots of space'
     fill_in 'price', with: 20
     fill_in 'street', with: '13 London street'
-    fill_in 'city', with: 'London'
+    fill_in 'city', with: 'Milan'
     click_button('Submit')
     expect(page).to have_content('A nice place')
     expect(page).to have_content('very big lots of space')
     expect(page).to have_content(20)
     expect(page).to have_content('13 London street')
-    expect(page).to have_content('London')
+    expect(page).to have_content('Milan')
   end
 
   scenario 'Spaces needs to have a name' do
