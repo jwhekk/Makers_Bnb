@@ -10,6 +10,7 @@ class MakersBnB < Sinatra::Base
   use Rack::MethodOverride
 
   get '/' do
+    @user = User.new
     erb :index
   end
 
@@ -18,16 +19,17 @@ class MakersBnB < Sinatra::Base
   end
 
   post '/sign_up' do
-    user = User.new(first_name: params[:first_name],
+    @user = User.new(first_name: params[:first_name],
                     second_name: params[:second_name],
                     username: params[:username],
                     email: params[:email],
                     password: params[:password],
                     password_confirmation: params[:password_confirmation])
 
-    if user.save
+    if @user.save
+      session[:user_id] = @user.id
       redirect '/'
-    end
+    else
       flash.now[:errors] = user.errors.full_messages
       erb :sign_up
     end
@@ -37,7 +39,14 @@ class MakersBnB < Sinatra::Base
   end
 
   post '/log_in' do
-   redirect '/'
+    user = User.authenticate(params[:email], params[:password])
+      if user
+        session[:user_id] = user.id
+        redirect '/'
+      else
+        flash.now[:errors] = ['The email or password is incorrect']
+        erb :log_in
+      end
   end
 
   delete '/log_out' do
@@ -99,10 +108,11 @@ class MakersBnB < Sinatra::Base
 
 
 
-
-
-
-
+  helpers do
+      def current_user
+        @current_user ||= User.get(session[:user_id])
+      end
+    end
 
 
 
