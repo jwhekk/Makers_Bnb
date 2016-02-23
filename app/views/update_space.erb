@@ -1,8 +1,10 @@
 <h1>Update your Space</h1>
+
+
  <% @space.each do |space| %>
-<form action='/space_update' method='post'>
+<form action='/update_space' method='post'>
   <label>Name:
- <input type='text' name='name' value='#{<%= space.name %>}'><br>
+ <input type='text' name='name' value='<%= space.name %>'><br>
  </label>
  <label>Description:
    <input type='text' name='description' value='<%= space.description %>'><br>

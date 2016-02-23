@@ -8,3 +8,4 @@ class Space
   property :street, String, required: true
   property :city, String, required: true
 end
+

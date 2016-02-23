@@ -77,14 +77,24 @@ class MakersBnB < Sinatra::Base
   end
 
   get '/update_space' do
-    @space_id = params[:space_id]
-    @space = Space.find(id: @space_id)
-    puts @space
+    session[:space_id] = params[:space_id]
+    @space = Space.find(id: session[:@space_id])
     erb :update_space
   end
 
   post '/update_space' do
-    redirect '/your_spaces'
+    @space = Space.get(session[:space_id])
+    @space.update(name: params[:name],
+                description: params[:description],
+                price: params[:price],
+                street: params[:street],
+                city: params[:city])
+      if @space.save
+      redirect '/your_spaces'
+    else
+      flash.now[:errors] = "Unable to update page"
+       erb :update_space
+    end
   end
 
 
