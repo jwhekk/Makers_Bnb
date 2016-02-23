@@ -18,6 +18,7 @@ class MakersBnB < Sinatra::Base
   end
 
   post '/sign_up' do
+    user = User.create(first_name: params[:first_name], second_name: params[:second_name], username: params[:username], email: params[:email], password: params[:password])
     redirect '/'
   end
 

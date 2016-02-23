@@ -21,3 +21,5 @@ feature "making account" do
   expect(User.count).to eq (1)
   end
 end
+
+
