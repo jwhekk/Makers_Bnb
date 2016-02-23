@@ -46,18 +46,28 @@ class MakersBnB < Sinatra::Base
   end
 
   post '/space_new' do
-     @space = Space.new(name: params[:name])
+     @space = Space.new(name: params[:name],
+      description: params[:description],
+      price: params[:price],
+      street: params[:street],
+      city: params[:city])
       if
         @space.save
-        session[:space] = @space.name
-        puts session[:space]
+        session[:name] = @space.name
+        session[:description] = @space.description
+        session[:price] = @space.price
+        session[:street] = @space.street
+        session[:city] = @space.city
       end
     redirect '/your_spaces'
   end
 
   get '/your_spaces' do
-    @space = session[:space]
-    puts @space
+    @name = session[:name]
+    @description = session[:description]
+    @price = session[:price]
+    @street = session[:street]
+    @city = session[:city]
     erb :your_spaces
   end
 
