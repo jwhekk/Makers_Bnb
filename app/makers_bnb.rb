@@ -53,21 +53,15 @@ class MakersBnB < Sinatra::Base
       city: params[:city])
       if
         @space.save
-        session[:name] = @space.name
-        session[:description] = @space.description
-        session[:price] = @space.price
-        session[:street] = @space.street
-        session[:city] = @space.city
-      end
-    redirect '/your_spaces'
+        redirect '/your_spaces'
+      else
+        flash.now[:errors] = @space.errors.full_messages
+        erb :space_new
+    end
   end
 
   get '/your_spaces' do
-    @name = session[:name]
-    @description = session[:description]
-    @price = session[:price]
-    @street = session[:street]
-    @city = session[:city]
+    @user_space = Space.all
     erb :your_spaces
   end
 

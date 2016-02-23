@@ -23,6 +23,7 @@ feature 'user can list a space' do
     fill_in 'street', with: '13 London street'
     fill_in 'city', with: 'London'
     expect{click_button('Submit')}.not_to change(Space, :count)
+    expect(page).to have_content('Name must not be blank')
   end
 
   scenario 'Spaces needs to have a description' do
@@ -33,6 +34,7 @@ feature 'user can list a space' do
     fill_in 'street', with: '13 London street'
     fill_in 'city', with: 'London'
     expect{click_button('Submit')}.not_to change(Space, :count)
+    expect(page).to have_content('Description must not be blank')
   end
 
   scenario 'Spaces needs to have a price' do
@@ -43,6 +45,7 @@ feature 'user can list a space' do
     fill_in 'street', with: '13 London street'
     fill_in 'city', with: 'London'
     expect{click_button('Submit')}.not_to change(Space, :count)
+    expect(page).to have_content('Price must not be blank')
   end
 
   scenario 'Spaces needs to have a street' do
@@ -53,6 +56,7 @@ feature 'user can list a space' do
     fill_in 'name', with: 'Bla Bla'
     fill_in 'city', with: 'London'
     expect{click_button('Submit')}.not_to change(Space, :count)
+    expect(page).to have_content('Street must not be blank')
   end
 
   scenario 'Spaces needs to have a city' do
@@ -63,5 +67,6 @@ feature 'user can list a space' do
     fill_in 'street', with: '13 London street'
     fill_in 'name', with: 'Bla Bla'
     expect{click_button('Submit')}.not_to change(Space, :count)
+    expect(page).to have_content('City must not be blank')
   end
 end

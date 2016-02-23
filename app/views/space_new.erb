@@ -1,3 +1,11 @@
+<% if flash[:errors] && !flash[:errors].empty? %>
+<ul> <% flash[:errors].each do |error| %>
+  <li> <%= error %>
+  </li>
+  <% end %>
+</ul>
+<% end %>
+
 <form action='/space_new' method='post'>
   <label>Name:
  <input type='text' name='name'><br>
@@ -8,8 +16,12 @@
  <label>Price per night:
  <input type='number' name='price'><br>
  </label>
- <label>Address:<br>
+ <h2>Address</h2>
+ <br>
+ <label>
  Street:<input type='text' name='street'><br>
+ </label>
+<label>
  City:<input type='text' name='city'><br>
  </label>
  <input type='submit' value='Submit'>

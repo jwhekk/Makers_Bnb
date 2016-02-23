@@ -1,6 +1,23 @@
 <h1>Your spaces</h1>
-Name: <%= @name %><br>
-Description: <%= @description %><br>
-Price:<%= @price %><br>
-Street:<%= @street %><br>
-City:<%= @city %><br>
+
+<% if @user_space %>
+
+<ul id='spaces_list'>
+
+<li> <% @user_space.each do |space| %>
+
+  Name: <%= space.name %><br>
+  Description: <%= space.description %><br>
+  Price:<%= space.price %><br>
+  Street:<%= space.street %><br>
+  City:<%= space.city %><br>
+  <% end %>
+</li>
+</ul>
+
+<% else %>
+
+Add a place!
+
+<% end %>
+
