@@ -29,7 +29,7 @@ class MakersBnB < Sinatra::Base
       redirect '/'
     end
       flash.now[:errors] = user.errors.full_messages
-      erb :'/sign_up'
+      erb :sign_up
     end
 
   get '/log_in' do
