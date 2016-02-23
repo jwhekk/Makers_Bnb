@@ -4,7 +4,7 @@ def make_a_space
     fill_in 'name', with: 'A nice place'
     fill_in 'description', with: 'very big lots of space'
     fill_in 'price', with: 20
-    fill_in 'street', with: '13 London street'
+    fill_in 'street', with: '13 Liverpool street'
     fill_in 'city', with: 'London'
     click_button('Submit')
 
