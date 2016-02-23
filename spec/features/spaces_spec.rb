@@ -14,4 +14,54 @@ feature 'user can list a space' do
     expect(page).to have_content('13 London street')
     expect(page).to have_content('London')
   end
+
+  scenario 'Spaces needs to have a name' do
+    visit '/'
+    click_button('List a Space')
+    fill_in 'description', with: 'very big lots of space'
+    fill_in 'price', with: 20
+    fill_in 'street', with: '13 London street'
+    fill_in 'city', with: 'London'
+    expect{click_button('Submit')}.not_to change(Space, :count)
+  end
+
+  scenario 'Spaces needs to have a description' do
+    visit '/'
+    click_button('List a Space')
+    fill_in 'name', with: 'A nice place'
+    fill_in 'price', with: 20
+    fill_in 'street', with: '13 London street'
+    fill_in 'city', with: 'London'
+    expect{click_button('Submit')}.not_to change(Space, :count)
+  end
+
+  scenario 'Spaces needs to have a price' do
+    visit '/'
+    click_button('List a Space')
+    fill_in 'description', with: 'very big lots of space'
+    fill_in 'name', with: 'Bla Bla'
+    fill_in 'street', with: '13 London street'
+    fill_in 'city', with: 'London'
+    expect{click_button('Submit')}.not_to change(Space, :count)
+  end
+
+  scenario 'Spaces needs to have a street' do
+    visit '/'
+    click_button('List a Space')
+    fill_in 'description', with: 'very big lots of space'
+    fill_in 'price', with: 20
+    fill_in 'name', with: 'Bla Bla'
+    fill_in 'city', with: 'London'
+    expect{click_button('Submit')}.not_to change(Space, :count)
+  end
+
+  scenario 'Spaces needs to have a city' do
+    visit '/'
+    click_button('List a Space')
+    fill_in 'description', with: 'very big lots of space'
+    fill_in 'price', with: 20
+    fill_in 'street', with: '13 London street'
+    fill_in 'name', with: 'Bla Bla'
+    expect{click_button('Submit')}.not_to change(Space, :count)
+  end
 end
