@@ -28,4 +28,20 @@ Password Confirmation:
 </label>
 <input type = 'submit' value='Submit' />
 </form>
+
+
+
+<% if flash[:errors] && !flash[:errors].empty? %>
+      <section id="footer">
+        <p>Please refer to the following errors below:</p>
+        <ul id='errors'>
+          <% flash[:errors].each do |error| %>
+            <li><%= error %></li>
+          <% end %>
+        </ul>
+      </section>
+    <% end %>
+
+
+
 </html>

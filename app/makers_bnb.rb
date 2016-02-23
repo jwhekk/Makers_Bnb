@@ -18,9 +18,19 @@ class MakersBnB < Sinatra::Base
   end
 
   post '/sign_up' do
-    user = User.create(first_name: params[:first_name], second_name: params[:second_name], username: params[:username], email: params[:email], password: params[:password])
-    redirect '/'
-  end
+    user = User.new(first_name: params[:first_name],
+                    second_name: params[:second_name],
+                    username: params[:username],
+                    email: params[:email],
+                    password: params[:password],
+                    password_confirmation: params[:password_confirmation])
+
+    if user.save
+      redirect '/'
+    end
+      flash.now[:errors] = user.errors.full_messages
+      erb :'/sign_up'
+    end
 
   get '/log_in' do
     erb :log_in
