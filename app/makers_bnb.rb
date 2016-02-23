@@ -30,9 +30,10 @@ class MakersBnB < Sinatra::Base
       session[:user_id] = @user.id
       redirect '/'
     else
-      flash.now[:errors] = user.errors.full_messages
+      flash.now[:errors] = @user.errors.full_messages
       erb :sign_up
     end
+  end
 
   get '/log_in' do
     erb :log_in
@@ -50,6 +51,8 @@ class MakersBnB < Sinatra::Base
   end
 
   delete '/log_out' do
+    session[:user_id] = nil
+    flash.keep[:notice] = 'Goodbye.'
     redirect '/'
   end
 
