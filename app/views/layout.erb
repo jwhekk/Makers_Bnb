@@ -4,6 +4,34 @@
     <title>Makers_Bnb</title>
   </head>
   <body>
+    <header>
+      <form action="/">
+        <input type='submit' value='Home'>
+      </form>
+      <% if @current_user %>
+    <% if request.path_info != '/space_new' %>
+      <form action="/space_new">
+        <input type='submit' value='List a Space'>
+      </form>
+      <% end %>
+      <form method='post' action='/log_out'>
+        <input type='hidden' name='_method' value='delete'>
+        <input id="header_button" type='submit' value='Log out'>
+      </form>
+
+      <% else %>
+
+        <form method="get" action="/sign_up">
+          <button type="submit">Sign Up</button>
+        </form>
+    <% if request.path_info != '/log_in' %>
+        <form method="get" action="/log_in">
+          <button type="submit">Log in</button>
+        </form>
+    <% end %>
+      <% end %>
+    </header>
+
     <% if flash[:errors] && !flash[:errors].empty? %>
       <section id="header">
         <p>Please refer to the following errors below:</p>

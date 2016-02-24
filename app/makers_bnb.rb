@@ -12,6 +12,7 @@ class MakersBnB < Sinatra::Base
   get '/' do
     @user = User.new
     @spaces = Space.all
+    @current_user = current_user
     erb :index
   end
 
@@ -90,6 +91,7 @@ class MakersBnB < Sinatra::Base
   end
 
   get '/space_new' do
+    @current_user = current_user
     erb :space_new
   end
 
