@@ -51,6 +51,8 @@ class MakersBnB < Sinatra::Base
   end
 
   delete '/log_out' do
+    session[:user_id] = nil
+    flash.keep[:notice] = 'Goodbye.'
     redirect '/'
   end
 

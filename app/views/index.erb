@@ -21,3 +21,11 @@
   <button type="submit">Log in</button>
 </form>
 
+<!-- <form method="post" action="/log_out">
+  <button type="submit">Log out</button>
+</form> -->
+
+<form method='post' action='/log_out'>
+          <input type='hidden' name='_method' value='delete'>
+          <input id="header_button" type='submit' value='Log out'>
+        </form>
