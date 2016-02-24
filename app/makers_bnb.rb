@@ -70,17 +70,14 @@ class MakersBnB < Sinatra::Base
                            end_date: params[:End_date],
                            message: params[:Message],
                            guest_number: params[:Guest_number])
+       if
 
-
-
-      if
-         @BookingRequest.save
-         # @current_user.requests << @requests
-         # puts @current_user.requests
+          @current_user.bookingRequests << @BookingRequest
+          @BookingRequest.save
           redirect '/your_requests'
 
        else
-          flash.now[:errors] = @BookingRequest.errors.full_messages
+         flash.now[:errors] = @BookingRequest.errors.full_messages
          puts "else"
          erb :making_a_request
        end
@@ -108,7 +105,6 @@ class MakersBnB < Sinatra::Base
                         street: params[:street],
                         city: params[:city],
                         host_email: @current_user.email)
-
       if
         @space.save
         redirect '/your_spaces'

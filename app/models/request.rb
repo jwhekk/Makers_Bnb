@@ -14,8 +14,8 @@ class BookingRequest
   property  :message, Text
   property  :guest_number, Integer
 
-  # belongs_to :user
-  # belongs_to :space
+  belongs_to :user
+  belongs_to :space
 
 
 end

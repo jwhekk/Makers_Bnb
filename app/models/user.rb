@@ -5,7 +5,7 @@ require 'dm-validations'
 
 class User
    include DataMapper::Resource
-   # has n, :requests, through: Resource
+   has n, :bookingRequests, through: Resource
 
    attr_accessor :password_confirmation
    attr_reader :password
