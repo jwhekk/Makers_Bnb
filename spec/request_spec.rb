@@ -1,7 +1,7 @@
-describe Request do
+describe BookingRequest do
 
   let!(:request) do
-    Request.create(start_date: '01/01/2016',
+    BookingRequest.create(start_date: '01/01/2016',
                     end_date: '07/01/2016',
                     message: "Hello, can I rent your place",
                     guest_number: 2

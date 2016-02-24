@@ -65,7 +65,7 @@ class MakersBnB < Sinatra::Base
 
   post '/making_a_request' do
     @current_user = current_user
-     @request = Request.new(start_date: params[:Start_date],
+    @BookingRequest = BookingRequest.new(start_date: params[:Start_date],
                            end_date: params[:End_date],
                            message: params[:Message],
                            guest_number: params[:Guest_number])
@@ -73,13 +73,13 @@ class MakersBnB < Sinatra::Base
 
 
       if
-         @request.save
+         @BookingRequest.save
          # @current_user.requests << @requests
          # puts @current_user.requests
           redirect '/your_requests'
 
        else
-          flash.now[:errors] = @request.errors.full_messages
+          flash.now[:errors] = @BookingRequest.errors.full_messages
          puts "else"
          erb :making_a_request
        end
