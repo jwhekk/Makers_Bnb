@@ -17,6 +17,7 @@ feature "making an account" do
     sign_up
     expect(current_path).to eq '/'
     expect(User.count).to eq (1)
+    click_button('Log out')
     sign_up
     expect(page).to have_content('Email is already taken')
   end
@@ -26,6 +27,7 @@ feature "making an account" do
     sign_up
     expect(current_path).to eq '/'
     expect(User.count).to eq (1)
+    click_button('Log out')
     sign_up
     expect(page).to have_content('Username is already taken')
   end
@@ -48,6 +50,7 @@ feature "making an account" do
   scenario "multiple error message can be shown on sign up page" do
     sign_up
     visit '/'
+    click_button('Log out')
     click_button('Sign Up')
     expect(current_path).to eq '/sign_up'
     expect(page.status_code).to eq (200)
