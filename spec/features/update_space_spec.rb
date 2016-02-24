@@ -1,5 +1,6 @@
 feature 'user can update a space' do
   scenario 'user can click to edit a space' do
+    sign_up
     make_a_space
     within(:css, 'ul li') do
       click_button('Edit')
@@ -14,6 +15,7 @@ feature 'user can update a space' do
   end
 
   scenario 'user can click to edit a space' do
+    sign_up
     make_a_space
     within'ul#spaces_list' do
       click_button('Edit')
