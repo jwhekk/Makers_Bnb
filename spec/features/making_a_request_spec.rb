@@ -1,6 +1,7 @@
 feature 'Making a request' do
 
   scenario "Allows a renter to make a request" do
+    sign_up
     make_a_space
     visit '/'
     click_button('Make a request')
