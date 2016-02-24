@@ -1,6 +1,6 @@
 class Space
   include DataMapper::Resource
-  has n, :request, through: Resource
+  has n, :requests, through: Resource
 
 
   property :id, Serial

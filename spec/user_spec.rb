@@ -1,7 +1,6 @@
 require_relative '../app/models/user'
 
 describe User do
-  # subject(:user){described_class.new}
   let!(:user) do
     User.create(first_name: 'Valentina',
                 second_name: 'Monetta',

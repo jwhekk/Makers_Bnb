@@ -3,13 +3,13 @@ class Request
 \
 
   property  :id, Serial
-  property  :Start_date, Date
-  property  :End_date, Date
-  property  :Message, Text
-  property  :Guest_number, Integer
+  property  :start_date, String
+  property  :end_date, String
+  property  :message, Text
+  property  :guest_number, Integer
 
-  belongs_to :user, :required => true
-  belongs_to :space, :required => true
+  belongs_to :user
+  belongs_to :space
 
 
 end
