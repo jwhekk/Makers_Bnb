@@ -85,7 +85,7 @@ feature 'user can list a space' do
   scenario 'Users sees only there own spaces' do
     sign_up
     make_a_space
-    visit('/')
+    # visit('/')
     click_button('Log out')
     sign_up2
     make_a_space2
