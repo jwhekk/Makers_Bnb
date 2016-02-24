@@ -3,15 +3,6 @@
   <input type='submit' value='List a Space'>
 </form>
 
-
-
-
-
-
-
-
-
-
 <form method="get" action="/sign_up">
   <button type="submit">Sign Up</button>
 </form>
@@ -29,3 +20,29 @@
           <input type='hidden' name='_method' value='delete'>
           <input id="header_button" type='submit' value='Log out'>
         </form>
+
+
+
+<h1>Makers BnB Spaces!</h1>
+
+
+<ul id='spaces_list'>
+
+ <% @spaces.each do |space| %>
+<li id="<%= space.id %>">
+
+<p> Name: <%= space.name %><br>
+  Description: <%= space.description %><br>
+  Price:<%= space.price %><br>
+  Street:<%= space.street %><br>
+  City:<%= space.city %><br>
+  <form action='/making_a_request'>
+    <input type='hidden' name= 'space_id' value= '<%= space.id %>'>
+    <input type='submit' value= 'Make a request'>
+  </form>
+
+</p>
+</li>
+<% end %>
+</ul>
+

@@ -11,6 +11,7 @@ class MakersBnB < Sinatra::Base
 
   get '/' do
     @user = User.new
+    @spaces = Space.all
     erb :index
   end
 
@@ -56,9 +57,20 @@ class MakersBnB < Sinatra::Base
     redirect '/'
   end
 
-  get '/requests' do
-    erb :requests
+  get '/making_a_request' do
+    @space = params[:space_id]
+    @space = Space.get(@space)
+    erb :making_a_request
   end
+
+  post '/making_a_request' do
+    redirect '/your_requests'
+  end
+
+  get '/your_requests' do
+    erb :your_requests
+  end
+
 
   get '/calendar' do
    erb :calendar
@@ -70,10 +82,10 @@ class MakersBnB < Sinatra::Base
 
   post '/space_new' do
      @space = Space.new(name: params[:name],
-      description: params[:description],
-      price: params[:price],
-      street: params[:street],
-      city: params[:city])
+                        description: params[:description],
+                        price: params[:price],
+                        street: params[:street],
+                        city: params[:city])
       if
         @space.save
         redirect '/your_spaces'
@@ -97,10 +109,10 @@ class MakersBnB < Sinatra::Base
   post '/update_space' do
     @space = Space.get(session[:space_id])
     @space.update(name: params[:name],
-                description: params[:description],
-                price: params[:price],
-                street: params[:street],
-                city: params[:city])
+                  description: params[:description],
+                  price: params[:price],
+                  street: params[:street],
+                  city: params[:city])
       if @space.save
       redirect '/your_spaces'
     else

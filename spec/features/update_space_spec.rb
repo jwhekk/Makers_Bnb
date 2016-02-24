@@ -1,9 +1,9 @@
 feature 'user can update a space' do
   scenario 'user can click to edit a space' do
     make_a_space
-    within(:css, 'ul li') do
-      click_button('Edit')
-    end
+      within(:css, 'ul li') do
+        click_button('Edit')
+      end
 
     expect(find_field('name').value).to eq ('A nice place')
     expect(find_field('description').value).to eq ('very big lots of space')
