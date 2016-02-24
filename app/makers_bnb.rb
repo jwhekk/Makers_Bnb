@@ -81,11 +81,14 @@ class MakersBnB < Sinatra::Base
   end
 
   post '/space_new' do
+     @current_user = current_user
      @space = Space.new(name: params[:name],
                         description: params[:description],
                         price: params[:price],
                         street: params[:street],
-                        city: params[:city])
+                        city: params[:city],
+                        host_email: @current_user.email)
+
       if
         @space.save
         redirect '/your_spaces'
@@ -96,7 +99,8 @@ class MakersBnB < Sinatra::Base
   end
 
   get '/your_spaces' do
-    @user_space = Space.all
+    @current_user = current_user
+    @user_space = Space.all(:host_email => @current_user.email)
     erb :your_spaces
   end
 

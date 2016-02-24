@@ -9,6 +9,17 @@ def make_a_space
     click_button('Submit')
 end
 
+def make_a_space2
+    visit '/'
+    click_button('List a Space')
+    fill_in 'name', with: 'Een mooie plek'
+    fill_in 'description', with: 'aan het water in het bos'
+    fill_in 'price', with: 20
+    fill_in 'street', with: 'Bosweg 34'
+    fill_in 'city', with: 'Gorssel'
+    click_button('Submit')
+end
+
 def sign_up
   visit '/'
   click_button('Sign Up')
@@ -23,3 +34,16 @@ def sign_up
   click_button('Submit')
 end
 
+def sign_up2
+  visit '/'
+  click_button('Sign Up')
+  expect(current_path).to eq '/sign_up'
+  expect(page.status_code).to eq (200)
+  fill_in :first_name, with: 'Piet'
+  fill_in :second_name, with: 'Jansen'
+  fill_in :email, with: 'password_digest@makersacademy.com'
+  fill_in :password, with: 'Super Secret Password'
+  fill_in :password_confirmation, with: 'Super Secret Password'
+  fill_in :username, with: 'Pijan'
+  click_button('Submit')
+end
