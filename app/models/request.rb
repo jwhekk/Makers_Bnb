@@ -1,7 +1,6 @@
 class Request
   include DataMapper::Resource
-  # has n, :users, through: Resource
-  # has n, :spaces, through: Resource
+\
 
   property  :id, Serial
   property  :Start_date, Date

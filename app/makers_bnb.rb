@@ -64,6 +64,7 @@ class MakersBnB < Sinatra::Base
   end
 
   post '/making_a_request' do
+    @current_user = current_user
     @request = Request.new(Start_date: params[:Start_date],
                           End_date: params[:End_date],
                           Message: params[:Message],
@@ -74,9 +75,9 @@ class MakersBnB < Sinatra::Base
       redirect '/your_requests'
 
     else
-      flash.now[:errors] = @request.errors.full_messages
-      erb:making_a_request
-    end  
+      # flash.now[:errors] = @request.errors.full_messages
+      erb :making_a_request
+    end
   end
 
   get '/your_requests' do
