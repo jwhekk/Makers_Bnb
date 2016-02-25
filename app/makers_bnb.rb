@@ -73,13 +73,6 @@ class MakersBnB < Sinatra::Base
                            guest_number: params[:Guest_number])
 
     @space = Space.get(session[:new_space_id])
-    # puts "space id #{@space}"
-
-
-    # puts "this is an error #{@space.errors.full_messages}"
-
-    # puts " current user bookings +++ #{@current_user.bookings.inspect}"
-
 
        if @booking.save
            @current_user.bookings << @booking
@@ -87,7 +80,6 @@ class MakersBnB < Sinatra::Base
            @current_user.save
            @space.save
 
-        puts " current user bookings +++ #{@current_user.bookings.inspect}"
           redirect '/your_requests'
 
        else
@@ -99,7 +91,6 @@ class MakersBnB < Sinatra::Base
   get '/your_requests' do
     @current_user = current_user
     @bookings = @current_user.bookings
-    puts "this is bookings #{@current_user.bookings}"
     erb :your_requests
   end
 
