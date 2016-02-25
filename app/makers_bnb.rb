@@ -66,23 +66,28 @@ class MakersBnB < Sinatra::Base
 
   post '/making_a_request' do
     @current_user = current_user
+    puts "this is renter current_user #{@current_user}"
     @booking = Booking.new(start_date: params[:Start_date],
                            end_date: params[:End_date],
                            message: params[:Message],
                            guest_number: params[:Guest_number])
 
-
     @space = Space.get(session[:new_space_id])
-    puts @space.bookings
-    @space.bookings << @booking
+    # puts "space id #{@space}"
 
 
-    @current_user.bookings << @booking
+    # puts "this is an error #{@space.errors.full_messages}"
+
+    # puts " current user bookings +++ #{@current_user.bookings.inspect}"
+
 
        if @booking.save
-          puts "#{@space.bookings} and #{@current_user.bookings}"
+           @current_user.bookings << @booking
+           @space.bookings << @booking
+           @current_user.save
+           @space.save
 
-          @booking.errors.each {|error| puts error }
+        puts " current user bookings +++ #{@current_user.bookings.inspect}"
           redirect '/your_requests'
 
        else
@@ -92,8 +97,9 @@ class MakersBnB < Sinatra::Base
   end
 
   get '/your_requests' do
-    @user = User.get(session[:user_id])
-    puts @user.bookings
+    @current_user = current_user
+    @bookings = @current_user.bookings
+    puts "this is bookings #{@current_user.bookings}"
     erb :your_requests
   end
 

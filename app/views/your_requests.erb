@@ -1,1 +1,16 @@
-<h1>Hello </h1>
+<h1>Your Bookings </h1>
+<%= @current_user.bookings.inspect %>
+<%=  @current_user.bookings.inspect  %>
+
+ <% @bookings.each do |bookings| %>
+
+  <ul>
+    <li> <%= bookings.start_date %> </li>
+    <li> <%= bookings.end_date %> </li>
+    <li> <%= bookings.message %> </li>
+    <li> <%= bookings.guest_number %> </li>
+  </ul>
+
+
+  <% end %>
+
