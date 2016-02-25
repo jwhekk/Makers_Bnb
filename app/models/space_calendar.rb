@@ -1,12 +1,12 @@
 require 'data_mapper'
 require_relative '../data_mapper_setup'
-require 'bcrypt'
 require 'dm-validations'
 
-class Calendar
+class SpaceCalendar
   include DataMapper::Resource
 
-  property :id, Serial
-  property :year_spaces, String, required: true
+  property :id,           Serial
+  property :year,         String
+  property :availability, Text
 
 end

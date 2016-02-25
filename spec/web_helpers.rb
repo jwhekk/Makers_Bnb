@@ -47,3 +47,17 @@ def sign_up2
   fill_in :username, with: 'Pijan'
   click_button('Submit')
 end
+
+def status
+  @status = ''
+  366.times { @status  += "a"}
+  @status
+end
+
+def july_free
+  count = 182
+  31.times do
+    space_calendar.availability[count] = "b"
+    count += 1
+  end
+end
