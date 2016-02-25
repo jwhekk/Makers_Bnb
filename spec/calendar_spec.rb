@@ -1,4 +1,5 @@
 require_relative '../app/models/space_calendar'
+
 describe SpaceCalendar  do
 
 # subject(:space_calendar) { described_class.new }
@@ -21,4 +22,4 @@ describe SpaceCalendar  do
   end
 
 end
- 
+

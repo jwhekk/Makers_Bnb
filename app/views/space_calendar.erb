@@ -1,0 +1,103 @@
+<style type="text/css">
+  table {
+    width: 700px;
+    border: 2px solid;
+    text-align: center;
+  }
+  tr {
+    height: 35px;
+    border: 2px solid;
+  }
+  td {
+    border: 2px solid;
+    width: 100px;
+  }
+  .a {
+    background-color: #D3D3D3
+  }
+  .b {
+    background-color: #90EE90
+  }
+  .c {
+    background-color: #FF6347
+  }
+ .d {
+    background-color: #00BFFF
+  }
+
+</style>
+
+<table>
+  <tr>
+    <td colspan="7"> 2016</td>
+  </tr>
+  <tr>
+    <td colspan="7"> July</td>
+  </tr>
+  <tr>
+    <td>Sun</td>
+    <td>Mon</td>
+    <td>Tue</td>
+    <td>Wed</td>
+    <td>Thu</td>
+    <td>Fri</td>
+    <td>Sat</td>
+  </tr>
+  <tr>
+    <% @count = 1 %>
+      <% 5.times do %>
+      <td></td>
+      <% @count += 1 %>
+      <% end %>
+      <% while @count%7 != 0 %>
+        <td> <%= @count - 5 %> </td>
+        <% @count += 1 %>
+      <%end %>
+      <td> <%= @count - 5 %> </td>
+  </tr>
+  <tr>
+    <% @count += 1 %>
+    <% while @count%7 != 0 %>
+        <td> <%= @count - 5 %> </td>
+        <% @count += 1 %>
+      <%end %>
+      <td> <%= @count - 5 %> </td>
+  </tr>
+  <tr>
+    <% @count += 1 %>
+    <% while @count%7 != 0 %>
+        <td> <%= @count - 5 %> </td>
+        <% @count += 1 %>
+      <%end %>
+      <td> <%= @count - 5 %> </td>
+  </tr>
+  <tr>
+    <% @count += 1 %>
+    <% while @count%7 != 0 %>
+        <td> <%= @count - 5 %> </td>
+        <% @count += 1 %>
+      <%end %>
+      <td> <%= @count - 5 %> </td>
+  </tr>
+  <tr>
+    <% @count += 1 %>
+    <% while @count%7 != 0 %>
+        <td> <%= @count - 5 %> </td>
+        <% @count += 1 %>
+      <%end %>
+      <td> <%= @count - 5 %> </td>
+  </tr>
+  <tr>
+    <% @count += 1 %>
+    <% while @count%7 != 0 %>
+     <% break if @count - 5 > 31%>
+        <td> <%= @count - 5 %> </td>
+        <% @count += 1 %>
+      <%end %>
+      <% @a = (8 - (@count%7)) %>
+      <% @a.times do %>
+      <td></td>
+      <%end %>
+  </tr>
+
+</table>

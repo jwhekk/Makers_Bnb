@@ -1,5 +1,6 @@
 ENV['RACK_ENV'] ||= 'development'
 
+require 'tilt/erb'
 require 'sinatra/base'
 require_relative 'data_mapper_setup'
 require 'sinatra/flash'
@@ -99,7 +100,7 @@ class MakersBnB < Sinatra::Base
 
 
   get '/calendar' do
-   erb :calendar
+   erb :space_calendar
   end
 
   get '/space_new' do
