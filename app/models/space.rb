@@ -1,6 +1,12 @@
+require 'data_mapper'
+require_relative '../data_mapper_setup'
+require 'bcrypt'
+require 'dm-validations'
+
 class Space
   include DataMapper::Resource
-  has n, :bookingRequests, through: Resource
+
+  has n, :bookings, through: Resource
 
 
   property :id, Serial

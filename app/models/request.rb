@@ -4,7 +4,7 @@ require 'bcrypt'
 require 'dm-validations'
 
 
-class BookingRequest
+class Booking
   include DataMapper::Resource
 
 
@@ -14,8 +14,6 @@ class BookingRequest
   property  :message, Text
   property  :guest_number, Integer
 
-  belongs_to :user
-  belongs_to :space
 
 
 end
