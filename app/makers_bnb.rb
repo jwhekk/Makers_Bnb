@@ -66,34 +66,29 @@ class MakersBnB < Sinatra::Base
 
   post '/making_a_request' do
     @current_user = current_user
-    puts "this is renter current_user #{@current_user}"
+    @space = Space.get(params[:space_id])
     @booking = Booking.new(start_date: params[:Start_date],
                            end_date: params[:End_date],
                            message: params[:Message],
-                           guest_number: params[:Guest_number])
-
-    @space = Space.get(session[:new_space_id])
-
-       if @booking.save
-           @current_user.bookings << @booking
-           @space.bookings << @booking
-           @current_user.save
-           @space.save
-
-          redirect '/your_requests'
-
-       else
-         flash.now[:errors] = @booking.errors.full_messages
-         erb :making_a_request
-       end
+                           guest_number: params[:Guest_number],
+                           space: @space)
+    if @booking.save
+        @current_user.bookings << @booking
+        @space.bookings << @booking
+        @current_user.save
+        @space.save
+        redirect '/your_requests'
+    else
+      flash.now[:errors] = @booking.errors.full_messages
+      erb :making_a_request
+    end
   end
 
   get '/your_requests' do
     @current_user = current_user
-    @bookings = @current_user.bookings
+    @space = Space.get(params[:space_id])
     erb :your_requests
   end
-
 
   get '/calendar' do
    erb :calendar
@@ -150,17 +145,11 @@ class MakersBnB < Sinatra::Base
     end
   end
 
-
-
   helpers do
       def current_user
         @current_user ||= User.get(session[:user_id])
       end
     end
-
-
-
-
 
   run! if app_file == $0
 end

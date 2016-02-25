@@ -2,11 +2,13 @@ require 'data_mapper'
 require_relative '../data_mapper_setup'
 require 'bcrypt'
 require 'dm-validations'
+require 'date'
 
 
 class Booking
   include DataMapper::Resource
 
+  attr_reader :calculate_stay, :calculate_price
 
   property  :id, Serial
   property  :start_date, String
@@ -14,6 +16,16 @@ class Booking
   property  :message, Text
   property  :guest_number, Integer
 
+  belongs_to :space
 
+  def calculate_stay
+    start_date = Date.parse(self.start_date)
+    end_date = Date.parse(self.end_date)
+    return (end_date - start_date)+1
+  end
+
+  # def calculate_price
+  #   (self.calculate_stay).to_i * (self.space.price).to_i
+  # end
 
 end
