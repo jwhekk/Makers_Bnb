@@ -16,4 +16,18 @@ feature 'Users can see their hosting requests' do
     expect(page).to have_content ("Hello, can I rent your place")
     expect(page).to have_content (2)
   end
+
+  scenario 'Users can confirm hosting requests' do
+    sign_up
+    make_a_space
+    click_button('Log out')
+    sign_up_second_user
+    make_a_request
+    click_button('Log out')
+    log_in
+    click_button('Your hosting requests')
+    click_button('Confirm')
+    expect(page).to have_content('Request Confirmed')
+  end
+
 end

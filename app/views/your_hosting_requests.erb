@@ -7,9 +7,17 @@
       <li> End date: <%= booking.end_date %> </li>
       <li> Message <%= booking.message %> </li>
       <li> Guests <%= booking.guest_number %> </li>
-      <% end %>
-
-
-
+      <li>confirmation Status <%= booking.confirmed %></li>
   </ul>
 
+<% if booking.confirmed == 'unconfirmed'%>
+<form method="post" action="/update_confirmation">
+  <input type='hidden' name= 'booking_id' value= '<%= booking.id %>'>
+  <input type="submit" name="confirmation_status" value="Confirm">
+  <input type="submit" name="confirmation_status" value="Deny">
+</form>
+<% else %>
+<h2>Request Confirmed</h2>
+<% end %>
+
+  <% end %>

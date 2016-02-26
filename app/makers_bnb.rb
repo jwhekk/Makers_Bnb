@@ -71,7 +71,8 @@ class MakersBnB < Sinatra::Base
                            end_date: params[:End_date],
                            message: params[:Message],
                            guest_number: params[:Guest_number],
-                           space: @space)
+                           space: @space,
+                           confirmed: 'unconfirmed')
     if @booking.save
         @current_user.bookings << @booking
         @space.bookings << @booking
@@ -157,6 +158,16 @@ class MakersBnB < Sinatra::Base
   post '/update_availability' do
     #calendar = params[:availabilty], params[:start_date], params[:end_date]
     redirect '/your_spaces'
+  end
+
+  post '/update_confirmation' do
+    @booking = Booking.get(params[:booking_id])
+    if params[:confirmation_status] == 'Confirm'
+      @booking.update(confirmed: 'confirmed')
+    else
+      @booking.update(confirmed: 'denied')
+    end
+    redirect('/your_hosting_requests')
   end
 
   helpers do

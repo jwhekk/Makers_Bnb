@@ -15,6 +15,7 @@ class Booking
   property  :end_date, String
   property  :message, Text
   property  :guest_number, Integer
+  property  :confirmed, String
 
   belongs_to :space
 

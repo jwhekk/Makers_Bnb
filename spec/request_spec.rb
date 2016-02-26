@@ -4,7 +4,8 @@ describe Booking do
     Booking.create(start_date: '01/01/2016',
                     end_date: '07/01/2016',
                     message: "Hello, can I rent your place",
-                    guest_number: 2
+                    guest_number: 2,
+                    confirmed: 'unconfirmed'
                     )
   end
 
@@ -26,6 +27,10 @@ describe Booking do
 
   it 'calculates the length of the stay' do
     expect(booking.calculate_stay).to eq (7)
+  end
+
+  it 'Is unconfirmed by default' do
+    expect(booking.confirmed).to eq('unconfirmed')
   end
 
 end
