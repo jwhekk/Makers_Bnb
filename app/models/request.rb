@@ -18,6 +18,7 @@ class Booking
   property  :confirmed, String
 
   belongs_to :space
+  belongs_to :user, :required => false
 
   def calculate_stay
     start_date = Date.parse(self.start_date)
@@ -30,3 +31,5 @@ class Booking
   # end
 
 end
+
+

@@ -129,6 +129,7 @@ DEPENDENCIES
   capybara
   data_mapper
   database_cleaner
+  dm-constraints
   dm-postgres-adapter
   rake
   rspec

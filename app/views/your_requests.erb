@@ -1,5 +1,7 @@
 <h1>Your Bookings </h1>
 
+
+
   <% @current_user.bookings.each do |bookings| %>
   <ul>
     <section id="booking">
@@ -16,7 +18,24 @@
     <li>End Date: <%= bookings.end_date %> </li>
     <li>Message: <%= bookings.message %> </li>
     <li>Number of Guests: <%= bookings.guest_number %> </li>
+    <li>Confirmation status: <%= bookings.confirmed %> </li>
   </section>
   </ul>
 
-  <% end %>
+<% if bookings.confirmed == 'confirmed'%>
+
+  <h2>Request Confirmed</h2>
+
+<% elsif bookings.confirmed == 'denied' %>
+
+  <h2>Request Denied</h2>
+
+  <form action='/delete_request' method='post'>
+    <input type='hidden'name='booking_id' value='<%= bookings.id %>'>
+    <input type='submit' value='Delete request'>
+  </form>
+
+<% end %>
+
+<% end %>
+

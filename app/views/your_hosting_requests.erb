@@ -2,6 +2,8 @@
 
 <% @current_user.spaces.bookings.each do |booking| %>
 
+
+
   <ul> <h2> Booking request for <%= booking.space.name %> </h2>
       <li> Start date: <%= booking.start_date %> </li>
       <li> End date: <%= booking.end_date %> </li>
@@ -13,11 +15,12 @@
 <% if booking.confirmed == 'unconfirmed'%>
 <form method="post" action="/update_confirmation">
   <input type='hidden' name= 'booking_id' value= '<%= booking.id %>'>
-  <input type="submit" name="confirmation_status" value="Confirm">
+  <input class='confirm'type="submit" name="confirmation_status" value="Confirm">
   <input type="submit" name="confirmation_status" value="Deny">
 </form>
 <% else %>
 <h2>Request Confirmed</h2>
 <% end %>
 
-  <% end %>
+
+   <% end %>

@@ -6,6 +6,7 @@ require 'dm-validations'
 class Space
   include DataMapper::Resource
 
+
   has n, :bookings, through: Resource
   belongs_to :user, :required => false
 

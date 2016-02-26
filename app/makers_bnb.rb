@@ -72,7 +72,8 @@ class MakersBnB < Sinatra::Base
                            message: params[:Message],
                            guest_number: params[:Guest_number],
                            space: @space,
-                           confirmed: 'unconfirmed')
+                           confirmed: 'unconfirmed',
+                           user: @current_user)
     if @booking.save
         @current_user.bookings << @booking
         @space.bookings << @booking
@@ -164,11 +165,22 @@ class MakersBnB < Sinatra::Base
     @booking = Booking.get(params[:booking_id])
     if params[:confirmation_status] == 'Confirm'
       @booking.update(confirmed: 'confirmed')
+
     else
       @booking.update(confirmed: 'denied')
     end
     redirect('/your_hosting_requests')
   end
+
+  post '/delete_request' do
+    @booking = Booking.get(params[:booking_id])
+    @space = @booking.space.name
+    puts @space
+    # BookingSpace.first(:booking => @booking, :space => @space).destroy!
+
+    redirect '/your_requests'
+  end
+
 
   helpers do
       def current_user
