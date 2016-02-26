@@ -84,6 +84,12 @@ class MakersBnB < Sinatra::Base
     end
   end
 
+  get '/your_hosting_requests' do
+    @current_user = current_user
+
+    erb :your_hosting_requests
+  end
+
   get '/your_requests' do
     @current_user = current_user
     @space = Space.get(params[:space_id])
@@ -107,8 +113,11 @@ class MakersBnB < Sinatra::Base
                         street: params[:street],
                         city: params[:city],
                         host_email: @current_user.email)
+
       if
         @space.save
+        @current_user.spaces << @space
+        @current_user.save
          session[:new_space_id] = @space.id
         redirect '/your_spaces'
 

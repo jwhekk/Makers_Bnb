@@ -1,0 +1,13 @@
+<h1> Your Hosting requests</h1>
+
+<% @current_user.spaces.bookings.each do |booking| %>
+
+  <ul> <h2> <%= booking.space.name %> </h2>
+      <li> <%= booking.start_date %> </li>
+      <li> <%= booking.end_date %> </li>
+      <% end %>
+
+
+
+  </ul>
+

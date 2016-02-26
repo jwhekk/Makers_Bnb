@@ -7,6 +7,7 @@ class Space
   include DataMapper::Resource
 
   has n, :bookings, through: Resource
+  belongs_to :user, :required => false
 
 
   property :id, Serial
@@ -16,4 +17,5 @@ class Space
   property :street, String, required: true
   property :city, String, required: true
   property :host_email, String
+
 end
