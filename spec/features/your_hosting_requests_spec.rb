@@ -13,5 +13,7 @@ feature 'Users can see their hosting requests' do
     expect(page).to have_content ('A nice place')
     expect(page).to have_content ('01/01/2016')
     expect(page).to have_content ('07/01/2016')
+    expect(page).to have_content ("Hello, can I rent your place")
+    expect(page).to have_content (2)
   end
 end

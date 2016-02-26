@@ -154,6 +154,11 @@ class MakersBnB < Sinatra::Base
     end
   end
 
+  post '/update_availability' do
+    #calendar = params[:availabilty], params[:start_date], params[:end_date]
+    redirect '/your_spaces'
+  end
+
   helpers do
       def current_user
         @current_user ||= User.get(session[:user_id])

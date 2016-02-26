@@ -18,6 +18,14 @@
     <input type='hidden' name= 'space_id' value= '<%= space.id %>'>
     <input type='submit' value= 'Edit'>
   </form>
+    <h3>Change Availability </h3>
+  <form action=/update_availability method='post'>
+    <input type='hidden' name= 'space_id' value= '<%= space.id %>'>
+    <input type='radio' name='availability' value='available'>Available<br>
+    <input type='radio' name='availability' value='unavailable'>Unavailable<br>
+    <input type='date' name='start_date'>
+    <input type='date' name='end_date'>
+  </form>
 
 </p>
 </li>
