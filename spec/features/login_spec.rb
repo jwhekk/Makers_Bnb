@@ -53,23 +53,5 @@ feature 'log in' do
 ')
   end
 
-  scenario 'Current user id/object remains the same after log out and log in' do
-    sign_up
-    puts @current_user
-    a = @current_user
-
-    click_button('Log out')
-    click_button('Log in')
-    b = @current_user
-    fill_in :email, with: 'Barry@makersacademy.com'
-    fill_in :password, with: 'Super Secret Password'
-    click_button('Log in')
-    puts @current_user
-
-    expect(a).to eq (b)
-
-    end
-
-
 
 end

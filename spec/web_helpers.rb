@@ -9,7 +9,7 @@ def make_a_space
     click_button('Submit')
 end
 
-def make_a_space2
+def make_a_space_second_user
     visit '/'
     click_button('List a Space')
     fill_in 'name', with: 'Een mooie plek'
@@ -34,7 +34,7 @@ def sign_up
   click_button('Submit')
 end
 
-def sign_up2
+def sign_up_second_user
   visit '/'
   click_button('Sign Up')
   expect(current_path).to eq '/sign_up'
@@ -47,3 +47,33 @@ def sign_up2
   fill_in :username, with: 'Pijan'
   click_button('Submit')
 end
+
+def make_a_request
+  click_button('Make a request')
+  fill_in('Start_date', with: "01/01/2016")
+  fill_in('End_date', with: "07/01/2016")
+  fill_in('Message', with: "Hello, can I rent your place")
+  fill_in('Guest_number', with: 2 )
+  click_button('Submit request')
+end
+
+def log_in
+  click_button('Log in')
+  fill_in :email, with: 'Barry@makersacademy.com'
+  fill_in :password, with: 'Super Secret Password'
+  click_button('Log in')
+end
+
+def make_a_request
+  click_button('Make a request')
+  expect(current_path).to eq('/making_a_request')
+  expect(page).to have_content('A nice place')
+  fill_in('Start_date', with: "01/01/2016")
+  fill_in('End_date', with: "07/01/2016")
+  fill_in('Message', with: "Hello, can I rent your place")
+  fill_in('Guest_number', with: 2 )
+  click_button('Submit request')
+  end
+
+
+
