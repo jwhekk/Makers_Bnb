@@ -12,8 +12,10 @@ describe SpaceCalendar  do
     expect(space_calendar.year).to eq '2016'
   end
 
-  it 'has a availability string for each year' do
-    expect(space_calendar.availability[45]).to eq "a"
+
+
+  it 'is available by default' do
+    expect(space_calendar.availability[45]).to eq "b"
   end
 
   it 'can update the status' do
@@ -22,4 +24,3 @@ describe SpaceCalendar  do
   end
 
 end
-

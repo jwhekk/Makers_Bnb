@@ -4,8 +4,10 @@ require 'tilt/erb'
 require 'sinatra/base'
 require_relative 'data_mapper_setup'
 require 'sinatra/flash'
+require_relative 'calendar'
 
 class MakersBnB < Sinatra::Base
+  include Calendar_helpers
   enable :sessions
   register Sinatra::Flash
   use Rack::MethodOverride
@@ -100,7 +102,9 @@ class MakersBnB < Sinatra::Base
 
 
   get '/calendar' do
-   erb :space_calendar
+    create_calendar
+    @calendar = prepare_calendar("2016-02-01")
+    erb :space_calendar
   end
 
   get '/space_new' do

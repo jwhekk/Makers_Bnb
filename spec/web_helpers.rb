@@ -50,7 +50,7 @@ end
 
 def status
   @status = ''
-  366.times { @status  += "a"}
+  366.times { @status  += "b"}
   @status
 end
 

@@ -29,10 +29,10 @@
 
 <table>
   <tr>
-    <td colspan="7"> 2016</td>
+    <td colspan="7"><%= @calendar[0] %></td>
   </tr>
   <tr>
-    <td colspan="7"> July</td>
+    <td colspan="7"><%= @calendar[1] %></td>
   </tr>
   <tr>
     <td>Sun</td>
@@ -43,61 +43,20 @@
     <td>Fri</td>
     <td>Sat</td>
   </tr>
-  <tr>
-    <% @count = 1 %>
-      <% 5.times do %>
-      <td></td>
-      <% @count += 1 %>
-      <% end %>
-      <% while @count%7 != 0 %>
-        <td> <%= @count - 5 %> </td>
-        <% @count += 1 %>
-      <%end %>
-      <td> <%= @count - 5 %> </td>
-  </tr>
-  <tr>
-    <% @count += 1 %>
-    <% while @count%7 != 0 %>
-        <td> <%= @count - 5 %> </td>
-        <% @count += 1 %>
-      <%end %>
-      <td> <%= @count - 5 %> </td>
-  </tr>
-  <tr>
-    <% @count += 1 %>
-    <% while @count%7 != 0 %>
-        <td> <%= @count - 5 %> </td>
-        <% @count += 1 %>
-      <%end %>
-      <td> <%= @count - 5 %> </td>
-  </tr>
-  <tr>
-    <% @count += 1 %>
-    <% while @count%7 != 0 %>
-        <td> <%= @count - 5 %> </td>
-        <% @count += 1 %>
-      <%end %>
-      <td> <%= @count - 5 %> </td>
-  </tr>
-  <tr>
-    <% @count += 1 %>
-    <% while @count%7 != 0 %>
-        <td> <%= @count - 5 %> </td>
-        <% @count += 1 %>
-      <%end %>
-      <td> <%= @count - 5 %> </td>
-  </tr>
-  <tr>
-    <% @count += 1 %>
-    <% while @count%7 != 0 %>
-     <% break if @count - 5 > 31%>
-        <td> <%= @count - 5 %> </td>
-        <% @count += 1 %>
-      <%end %>
-      <% @a = (8 - (@count%7)) %>
-      <% @a.times do %>
-      <td></td>
-      <%end %>
-  </tr>
-
+    <% @day = @calendar[2]
+      index = 0
+      (@day.length/7).times do %>
+        <tr>
+      <%  7.times do %>
+          <td class= '<%= @day[index][1] %>'>
+            <% if @day[index][0]== 0 %>
+                 </td>
+            <% else %>
+                <%=  @day[index][0] %>
+                </td>
+            <% end
+            index += 1
+            end %>
+            </tr>
+   <%  end %>
 </table>
