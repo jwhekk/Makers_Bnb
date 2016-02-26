@@ -1,25 +1,26 @@
-<h1>Update your Space</h1>
-
+<h1 id="page_title">Update your space</h1>
 
  <% @space.each do |space| %>
-<form action='/update_space' method=slac'post'>
-  <label>Name:
- <input type='text' name='name' value='<%= space.name %>'><br>
- </label>
- <label>Description:
-   <input type='text' name='description' value='<%= space.description %>'><br>
- </label>
- <label>Price per night:
- <input type='number' name='price' value='<%= space.price %>'><br>
- </label>
- <h2>Address</h2>
- <br>
- <label>
- Street:<input type='text' name='street' value='<%= space.street %>'><br>
- </label>
-<label>
- City:<input type='text' name='city' value='<%= space.city %>'><br>
- </label>
- <input type='submit' value='Submit'>
-</form>
+  <section class="container">
+    <form action='/update_space' method='post'>
+      <label>Name:
+     <input type='text' name='name' value='<%= space.name %>'><br>
+     </label>
+     <label>Description:
+       <input type='text' name='description' value='<%= space.description %>'><br>
+     </label>
+     <label>Price per night:
+     <input type='number' name='price' value='<%= space.price %>'><br>
+     </label>
+     <h2>Address</h2>
+     <br>
+     <label>
+     Street:<input type='text' name='street' value='<%= space.street %>'><br>
+     </label>
+    <label>
+     City:<input type='text' name='city' value='<%= space.city %>'><br>
+     </label>
+     <input type='submit' value='Submit'>
+    </form>
+ </section>
 <% end %>

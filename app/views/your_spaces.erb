@@ -1,39 +1,31 @@
-
-<h1>Your spaces</h1>
+<h1 id="page_title">Your spaces</h1>
 
 <% if @user_space %>
-
-<ul id='spaces_list'>
-
- <% @user_space.each do |space| %>
-<li id="<%= space.id %>">
-
-<p>  Name: <%= space.name %><br>
-  Description: <%= space.description %><br>
-  Price:<%= space.price %><br>
-  Street:<%= space.street %><br>
-  City:<%= space.city %><br>
-  Host Email:<%= space.host_email %><br>
-  <form action=/update_space>
-    <input type='hidden' name= 'space_id' value= '<%= space.id %>'>
-    <input type='submit' value= 'Edit'>
-  </form>
-    <h3>Change Availability </h3>
-  <form action=/update_availability method='post'>
-    <input type='hidden' name= 'space_id' value= '<%= space.id %>'>
-    <input type='radio' name='availability' value='available'>Available<br>
-    <input type='radio' name='availability' value='unavailable'>Unavailable<br>
-    <input type='date' name='start_date'>
-    <input type='date' name='end_date'>
-  </form>
-
-</p>
-</li>
+<section class="container">
+   <% @user_space.each do |space| %>
+     <section id="<%= space.id %>">
+      <p>Name: <%= space.name %></p><br>
+      <p>Description: <%= space.description %></p><br>
+      <p>Price: <%= space.price %></p><br>
+      <p>Street: <%= space.street %></p><br>
+      <p>City: <%= space.city %></p><br>
+      <p>Host Email: <%= space.host_email %></p><br>
+      <form action=/update_space>
+        <input type='hidden' name= 'space_id' value= '<%= space.id %>'>
+        <input type='submit' value= 'Edit'>
+      </form>
+      <h3>Change Availability </h3>
+      <form action=/update_availability method='post'>
+        <input type='hidden' name= 'space_id' value= '<%= space.id %>'>
+        <input type='radio' name='availability' value='available'>Available<br>
+        <input type='radio' name='availability' value='unavailable'>Unavailable<br>
+        <input type='date' name='start_date'>
+        <input type='date' name='end_date'>
+      </form>
+     </section>
+</section>
   <% end %>
-</ul>
 
 <% else %>
-.
 Add a place!
-
 <% end %>

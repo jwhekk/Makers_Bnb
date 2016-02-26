@@ -2,9 +2,9 @@ feature 'user can update a space' do
   scenario 'user can click to edit a space' do
     sign_up
     make_a_space
-      within(:css, 'ul li') do
+      # within(:css, 'ul li') do
         click_button('Edit')
-      end
+      # end
     expect(find_field('name').value).to eq ('A nice place')
     expect(find_field('description').value).to eq ('very big lots of space')
     expect(find_field('price').value).to eq ("20")
@@ -16,9 +16,9 @@ feature 'user can update a space' do
   scenario 'user can click to edit a space' do
     sign_up
     make_a_space
-    within'ul#spaces_list' do
+    # within'ul#spaces_list' do
       click_button('Edit')
-    end
+    # end
     fill_in 'name', with: 'An even nicer place'
     click_button('Submit')
     expect(page).to have_content('An even nicer place')

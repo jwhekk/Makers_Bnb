@@ -1,26 +1,24 @@
-<h1> Your Hosting requests</h1>
+<h1 id="page_title">Your hosting requests</h1>
 
 <% @current_user.spaces.bookings.each do |booking| %>
-
-
-
-  <ul> <h2> Booking request for <%= booking.space.name %> </h2>
+  <section id="container">
+    <h2> Booking request for <%= booking.space.name %> </h2>
+    <ul>
       <li> Start date: <%= booking.start_date %> </li>
       <li> End date: <%= booking.end_date %> </li>
       <li> Message <%= booking.message %> </li>
       <li> Guests <%= booking.guest_number %> </li>
       <li>confirmation Status <%= booking.confirmed %></li>
-  </ul>
+    </ul>
 
-<% if booking.confirmed == 'unconfirmed'%>
-<form method="post" action="/update_confirmation">
-  <input type='hidden' name= 'booking_id' value= '<%= booking.id %>'>
-  <input class='confirm'type="submit" name="confirmation_status" value="Confirm">
-  <input type="submit" name="confirmation_status" value="Deny">
-</form>
-<% else %>
-<h2>Request Confirmed</h2>
+    <% if booking.confirmed == 'unconfirmed'%>
+      <form method="post" action="/update_confirmation">
+        <input type='hidden' name= 'booking_id' value= '<%= booking.id %>'>
+        <input class='confirm'type="submit" name="confirmation_status" value="Confirm">
+        <input type="submit" name="confirmation_status" value="Deny">
+      </form>
+    <% else %>
+      <h2>Request Confirmed</h2>
+    <% end %>
+  </section>
 <% end %>
-
-
-   <% end %>
