@@ -173,10 +173,6 @@ class MakersBnB < Sinatra::Base
   end
 
   post '/delete_request' do
-    @booking = Booking.get(params[:booking_id])
-    @space = @booking.space.name
-    puts @space
-    # BookingSpace.first(:booking => @booking, :space => @space).destroy!
 
     redirect '/your_requests'
   end

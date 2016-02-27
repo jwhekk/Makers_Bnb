@@ -3,6 +3,7 @@ require_relative '../data_mapper_setup'
 require 'bcrypt'
 require 'dm-validations'
 
+
 class Space
   include DataMapper::Resource
 

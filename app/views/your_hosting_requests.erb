@@ -1,8 +1,10 @@
 <h1> Your Hosting requests</h1>
 
-<% @current_user.spaces.bookings.each do |booking| %>
+<% @current_user.spaces.each do |space| %>
 
-
+ <%if space.bookings %>
+   <% space.bookings.each do |booking| %>
+   <% if booking.confirmed == 'unconfirmed' || booking.confirmed == 'confirmed' %>
 
   <ul> <h2> Booking request for <%= booking.space.name %> </h2>
       <li> Start date: <%= booking.start_date %> </li>
@@ -21,6 +23,8 @@
 <% else %>
 <h2>Request Confirmed</h2>
 <% end %>
-
+<% end %>
+<% end %>
+<% end %>
 
    <% end %>

@@ -5,6 +5,7 @@ require 'dm-validations'
 require 'date'
 
 
+
 class Booking
   include DataMapper::Resource
 
@@ -18,7 +19,7 @@ class Booking
   property  :confirmed, String
 
   belongs_to :space
-  belongs_to :user, :required => false
+  belongs_to :user
 
   def calculate_stay
     start_date = Date.parse(self.start_date)

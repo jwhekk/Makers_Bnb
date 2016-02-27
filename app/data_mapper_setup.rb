@@ -1,5 +1,6 @@
 require 'data_mapper'
 require 'dm-postgres-adapter'
+require 'dm-constraints'
 
 require_relative 'models/request'
 require_relative 'models/user'
