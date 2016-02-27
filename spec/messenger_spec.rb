@@ -2,7 +2,8 @@ require_relative '../app/controllers/messenger'
 
 describe Messenger do
 
-  subject(:messenger) { described_class.new}
+  subject(:messenger) { described_class.new }
+
 
   it {is_expected.to respond_to(:send_booking_confirmation_text)}
 
