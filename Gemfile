@@ -8,6 +8,8 @@ gem 'dm-postgres-adapter'
 gem 'bcrypt'
 gem 'sinatra-flash'
 gem 'sinatra'
+gem 'twilio-ruby'
+gem 'dotenv'
 
 group :test do
 gem 'rspec'
