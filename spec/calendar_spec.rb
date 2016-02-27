@@ -5,7 +5,7 @@ describe SpaceCalendar  do
 # subject(:space_calendar) { described_class.new }
   let!(:space_calendar) do
     SpaceCalendar.create(year: '2016',
-                          availability: status)
+                          availability: statuses)
   end
 
   it 'has a year' do
