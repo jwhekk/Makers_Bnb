@@ -10,6 +10,7 @@ class Space
 
   has n, :bookings, through: Resource
   belongs_to :user, :required => false
+  has n, :calendars
 
 
   property :id, Serial

@@ -4,6 +4,7 @@ require_relative 'requirements'
 
 
 class MakersBnB < Sinatra::Base
+  include Calendar_helpers
   enable :sessions
   register Sinatra::Flash
   use Rack::MethodOverride
@@ -99,7 +100,9 @@ class MakersBnB < Sinatra::Base
   end
 
   get '/calendar' do
-   erb :calendar
+    create_calendar
+    @calendar = prepare_calendar("2016-03-01")
+   erb :space_calendar
   end
 
   get '/space_new' do

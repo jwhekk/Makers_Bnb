@@ -10,6 +10,7 @@ require 'rspec'
 require 'database_cleaner'
 require 'web_helpers'
 require_relative '../app/models/user'
+require_relative '../app/models/space_calendar'
 
 
 

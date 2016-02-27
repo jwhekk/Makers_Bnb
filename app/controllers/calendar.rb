@@ -25,7 +25,7 @@ module Calendar_helpers
     # days = year_day2 - year_day1
     days_and_start = calculate_days(date_start,date_end)[1]
     days = days_and_start[0]
-    start = year_day1 - 1
+    start = days_and_start[1] - 1
     days.times do
       test_calendar.availability[start] = 'c'
       start += 1

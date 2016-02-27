@@ -108,6 +108,16 @@ def make_a_request
   click_button('Submit request')
   end
 
+  def statuses
+    @status = ''
+    366.times { @status  += "b"}
+    @status
+  end
 
-
-
+  def july_free
+    count = 182
+    31.times do
+      space_calendar.availability[count] = "b"
+      count += 1
+    end
+  end
