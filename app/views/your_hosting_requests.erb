@@ -4,7 +4,7 @@
  <section id="container">
  <%if space.bookings %>
    <% space.bookings.each do |booking| %>
-   <% if booking.confirmed == 'unconfirmed' || booking.confirmed == 'confirmed' %>
+    <% if booking.confirmed == 'unconfirmed' || booking.confirmed == 'confirmed' %>
 
     <h2> Booking request for <%= booking.space.name %> </h2>
     <ul>

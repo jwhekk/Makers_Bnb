@@ -62,7 +62,9 @@ class MakersBnB < Sinatra::Base
   get '/making_a_request' do
     @space = params[:space_id]
     @space = Space.get(@space)
+    @calendar = prepare_calendar("2016-03-01", @space)
     erb :making_a_request
+
   end
 
   post '/making_a_request' do
@@ -100,8 +102,8 @@ class MakersBnB < Sinatra::Base
   end
 
   get '/calendar' do
-    create_calendar
-    @calendar = prepare_calendar("2016-03-01")
+    # create_calendar
+    # @calendar = prepare_calendar("2016-03-01", )
    erb :space_calendar
   end
 
@@ -117,8 +119,10 @@ class MakersBnB < Sinatra::Base
                         price: params[:price],
                         street: params[:street],
                         city: params[:city],
-                        host_email: @current_user.email)
+                        host_email: @current_user.email,
+                        )
 
+     @space.space_calendars << create_calendar
       if
         @space.save
         @current_user.spaces << @space
@@ -176,7 +180,8 @@ class MakersBnB < Sinatra::Base
   end
 
   post '/delete_request' do
-
+    @booking = Booking.get(params[:booking_id])
+    @booking.destroy
     redirect '/your_requests'
   end
 
