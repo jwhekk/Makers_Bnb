@@ -1,0 +1,86 @@
+<style type="text/css">
+  table {
+    width: 700px;
+    border: 2px solid;
+    text-align: center;
+  }
+  tr {
+    height: 35px;
+    border: 2px solid;
+  }
+  td {
+    border: 2px solid;
+    width: 100px;
+  }
+  .a {
+    background-color: #D3D3D3
+  }
+  .b {
+    background-color: #90EE90
+  }
+  .c {
+    background-color: #FF6347
+  }
+ .d {
+    background-color: #00BFFF
+  }
+
+</style>
+
+<h1 id="page_title">More info</h1>
+
+<p>Name: <%= @space.name %></p><br>
+<p>Description: <%= @space.description %></p><br>
+<p>Price:<%= @space.price %></p><br>
+<p>Street:<%= @space.street %></p><br>
+<p>City:<%= @space.city %></p><br>
+
+<table>
+  <tr>
+    <td colspan="7"><%= @calendar[0] %></td>
+  </tr>
+  <tr>
+    <td>
+      <form method="post" action='/more_info'>
+        <input type='hidden' name= 'month_showed' value= '<%= @calendar[1] %>'>
+        <input type='hidden' name= 'space_id' value= '<%= @space.id %>'>
+        <input type='hidden' name= 'pressed' value= 'prev'>
+        <button type='submit'>Prev</button>
+      </form>
+    </td>
+    <td colspan="5"><%= @calendar[1] %></td>
+    <td>
+      <form method="post" action='/more_info'>
+        <input type='hidden' name= 'month_showed' value= '<%= @calendar[1] %>'>
+        <input type='hidden' name= 'space_id' value= '<%= @space.id %>'>
+        <input type='hidden' name= 'pressed' value= 'next'>
+        <button type='submit'>Next</button>
+      </form>
+    </td>
+  </tr>
+  <tr>
+    <td>Sun</td>
+    <td>Mon</td>
+    <td>Tue</td>
+    <td>Wed</td>
+    <td>Thu</td>
+    <td>Fri</td>
+    <td>Sat</td>
+  </tr>
+    <% @day = @calendar[2]
+      index = 0
+      (@day.length/7).times do %>
+        <tr>
+      <%  7.times do %>
+          <td class= '<%= @day[index][1] %>'>
+            <% if @day[index][0]== 0 %>
+                 </td>
+            <% else %>
+                <%=  @day[index][0] %>
+                </td>
+            <% end
+            index += 1
+            end %>
+            </tr>
+   <%  end %>
+</table>
