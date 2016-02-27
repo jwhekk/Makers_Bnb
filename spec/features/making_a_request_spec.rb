@@ -61,7 +61,7 @@ feature 'Making a request' do
     click_button('Your requests')
     click_button('Delete request')
     expect(current_path).to eq ('/your_requests')
-    expect(page).to have_content('Denied')
+    expect(page).not_to have_content('A nice place')
     end
 
 

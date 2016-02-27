@@ -4,7 +4,8 @@ module Calendar_helpers
             'August', 'September', 'October', 'November', 'December']
   def create_calendar
     SpaceCalendar.create(year: '2016',
-                          availability: statuses)
+                          availability: statuses,
+                          space: @space)
 
   end
 
@@ -33,8 +34,9 @@ module Calendar_helpers
     test_calendar.save
   end
 
-  def prepare_calendar(date)
-    test_calendar = SpaceCalendar.last
+  def prepare_calendar(date, space)
+    calendars = space.space_calendars
+    test_calendar = calendars.first
     date_calendar = split_date(date)
     month_name = MONTHS[date_calendar[1].to_i-1]
     date_obj1 = Date.new(date_calendar[0].to_i, date_calendar[1].to_i, 1)

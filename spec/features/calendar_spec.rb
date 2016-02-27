@@ -1,14 +1,14 @@
-feature 'calendar' do
+# feature 'calendar' do
 
-  let!(:space_calendar) do
-    SpaceCalendar.create(year: '2016',
-                          availability: statuses)
-  end
+#   let!(:space_calendar) do
+#     SpaceCalendar.create(year: '2016',
+#                           availability: statuses)
+#   end
 
-  scenario 'shows the availability of the space' do
-    visit '/calendar'
-    expect(page).to have_content'February'
-  end
+#   scenario 'shows the availability of the space' do
+#     visit '/'
+#     expect(page).to have_content'February'
+#   end
 
   # scenario 'shows the updated availability' do
   #   visit '/calendar'
@@ -21,4 +21,4 @@ feature 'calendar' do
 #     expect(page).to have_content'July'
 #   end
 
-end
+# end

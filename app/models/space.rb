@@ -8,9 +8,9 @@ class Space
   include DataMapper::Resource
 
 
-  has n, :bookings, through: Resource
+  has n, :bookings
   belongs_to :user, :required => false
-  has n, :calendars
+  has n, :space_calendars
 
 
   property :id, Serial
