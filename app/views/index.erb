@@ -1,47 +1,17 @@
+<h1 id="page_title">Makers BnB Spaces!</h1>
 
-<!-- <form action="/space_new">
-  <input type='submit' value='List a Space'>
-</form>
-
-<form method="get" action="/sign_up">
-  <button type="submit">Sign Up</button>
-</form>
-
-
-<form method="get" action="/log_in">
-  <button type="submit">Log in</button>
-</form> -->
-
-<!-- <form method="post" action="/log_out">
-  <button type="submit">Log out</button>
-</form> -->
-
-<!-- <form method='post' action='/log_out'>
-          <input type='hidden' name='_method' value='delete'>
-          <input id="header_button" type='submit' value='Log out'>
-        </form> -->
-
-
-
-<h1>Makers BnB Spaces!</h1>
-
-
-<ul id='spaces_list'>
-
- <% @spaces.each do |space| %>
-<li id="<%= space.id %>">
-
-<p> Name: <%= space.name %><br>
-  Description: <%= space.description %><br>
-  Price:<%= space.price %><br>
-  Street:<%= space.street %><br>
-  City:<%= space.city %><br>
-  <form action='/making_a_request'>
-    <input type='hidden' name= 'space_id' value= '<%= space.id %>'>
-    <input type='submit' value= 'Make a request'>
-  </form>
-
-</p>
-</li>
-<% end %>
-</ul>
+<section id='spaces_list'>
+  <% @spaces.each do |space| %>
+    <section id="<%= space.id %>">
+      <p>Name: <%= space.name %></p><br>
+      <p>Description: <%= space.description %></p><br>
+      <p>Price:<%= space.price %></p><br>
+      <p>Street:<%= space.street %></p><br>
+      <p>City:<%= space.city %></p><br>
+      <form action='/making_a_request'>
+        <input type='hidden' name= 'space_id' value= '<%= space.id %>'>
+        <input type='submit' value= 'Make a request'>
+      </form>
+    </section>
+  <% end %>
+</section>

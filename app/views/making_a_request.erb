@@ -1,16 +1,16 @@
-<title>Request page</title>
-<h1> Request for <%= @space.name %> </h1>
+<h1 id="page_title"> Request for <%= @space.name %> </h1>
 
-
-<form action='/making_a_request' method='post'>
-  <label> Start Date: </label>
-  <input type='date' name='Start_date'>
-  <label> End Date: </label>
-  <input type = 'date' name='End_date'>
-  <label> Message: </label>
-  <input type = 'textarea' name='Message'>
-  <label> Number: </label>
-  <input type = 'number' name='Guest_number'>
-  <input type='hidden' name= 'space_id' value= '<%= @space.id %>'>
-  <input type = 'submit' value='Submit request'>
-</form>
+<section class="container">
+  <form action='/making_a_request' method='post'>
+    <label> Start Date: </label>
+    <input type='date' name='Start_date'>
+    <label> End Date: </label>
+    <input type = 'date' name='End_date'>
+    <label> Message: </label>
+    <input type = 'textarea' name='Message'>
+    <label> Number: </label>
+    <input type = 'number' name='Guest_number'>
+    <input type='hidden' name= 'space_id' value= '<%= @space.id %>'>
+    <input type = 'submit' value='Submit request'>
+  </form>
+<section>
