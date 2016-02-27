@@ -1,6 +1,7 @@
 ENV['RACK_ENV'] ||= 'development'
 
 require_relative 'requirements'
+require_relative 'controllers/messenger'
 
 
 class MakersBnB < Sinatra::Base
@@ -172,9 +173,13 @@ class MakersBnB < Sinatra::Base
     @booking = Booking.get(params[:booking_id])
     if params[:confirmation_status] == 'Confirm'
       @booking.update(confirmed: 'confirmed')
+      @messenger=Messenger.new
+      @messenger.send_booking_confirmation_text
 
     else
       @booking.update(confirmed: 'denied')
+      @messenger=Messenger.new
+      @messenger.send_request_denied_text
     end
     redirect('/your_hosting_requests')
   end
