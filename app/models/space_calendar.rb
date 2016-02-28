@@ -5,7 +5,7 @@ require 'dm-validations'
 class SpaceCalendar
   include DataMapper::Resource
 
-  belongs_to :space
+  belongs_to :space, :required => false
 
   property :id,           Serial
   property :year,         String

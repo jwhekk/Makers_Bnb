@@ -35,26 +35,16 @@ module Calendar_helpers
   end
 
   def prepare_calendar(date, space)
+    date_calendar = Date.parse(date)
+    p date_calendar
     calendars = space.space_calendars
     test_calendar = calendars.first
-    date_calendar = split_date(date)
-    month_name = MONTHS[date_calendar[1].to_i-1]
-    date_obj1 = Date.new(date_calendar[0].to_i, date_calendar[1].to_i, 1)
-    next_month = date_calendar[1].to_i + 1
-    date_obj2 = Date.new(date_calendar[0].to_i, next_month, 1)
-    year_day1 = date_obj1.yday
-    year_day2 = date_obj2.yday
-    week_day = date_obj1.wday
-    number_of_days = year_day2 - year_day1
-    # end_date = date_calendar
-    # end_date[1] = (end_date[1].to_i + 1).to_s
-    # puts "end date #{end_date}"
-    # days_and_start = calculate_days(date_calendar,end_date)
-    # puts days_and_start
-    # number_of_days = days_and_start[0]
+    month_name = date_calendar.strftime("%B")
+    number_of_days = date_calendar.next_month.yday - date_calendar.yday
     days = []
     week_day = calculate_week_day(date)
-    availability = test_calendar.availability[year_day1.to_i,(number_of_days+1)]
+    week_day = date_calendar.wday
+    availability = test_calendar.availability[date_calendar.yday,(number_of_days+1)]
     week_day.times { days << [0,'z']}
     number = 1
     number_of_days.times do
@@ -64,7 +54,7 @@ module Calendar_helpers
     end_blanks = 7 - (week_day + number_of_days)%7
     end_blanks.times { days << [0,'z']}
     calendar = []
-    calendar[0] = date_calendar[0]
+    calendar[0] = date_calendar.year.to_s
     calendar[1] = month_name
     calendar[2] = days
     return calendar
