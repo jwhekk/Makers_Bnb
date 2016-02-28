@@ -103,8 +103,8 @@ class MakersBnB < Sinatra::Base
   end
 
   get '/calendar' do
-    # create_calendar
-    # @calendar = prepare_calendar("2016-03-01", )
+    create_calendar
+    @calendar = prepare_calendar("2016-03-01", Space.get(1) )
    erb :space_calendar
   end
 
@@ -188,6 +188,28 @@ class MakersBnB < Sinatra::Base
     @booking = Booking.get(params[:booking_id])
     @booking.destroy
     redirect '/your_requests'
+  end
+
+  get '/more_info' do
+    if !session[:calendar]
+      session[:date] = Date.today.to_s[0,7] + '-01'
+      @calendar = prepare_calendar(session[:date], Space.get(1) )
+    else
+      @calendar = session[:calendar]
+    end
+    erb :more_info
+  end
+
+  post '/more_info' do
+    @space = Space.get(1)
+    if params[:pressed] == 'next'
+      session[:calendar] = prepare_next(session[:date], @space)
+      session[:date]= Date.parse(session[:date]).next_month.to_s[0,10]
+    else
+      session[:calendar] = prepare_previous(session[:date], @space)
+      session[:date]= Date.parse(session[:date]).prev_month.to_s[0,10]
+    end
+    redirect '/more_info'
   end
 
 

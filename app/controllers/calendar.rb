@@ -40,7 +40,11 @@ module Calendar_helpers
     calendars = space.space_calendars
     test_calendar = calendars.first
     month_name = date_calendar.strftime("%B")
-    number_of_days = date_calendar.next_month.yday - date_calendar.yday
+    if month_name == "December"
+      number_of_days = 31
+    else
+      number_of_days = date_calendar.next_month.yday - date_calendar.yday
+    end
     days = []
     week_day = calculate_week_day(date)
     week_day = date_calendar.wday
@@ -79,5 +83,19 @@ module Calendar_helpers
     week_date = split_date(date)
     date_obj = Date.new(week_date[0].to_i, week_date[1].to_i, week_date[2].to_i)
     week_day = date_obj.wday
+  end
+
+  def prepare_next(date, space)
+    puts space
+    puts '------'
+    month_next = Date.parse(date).next_month.to_s[0,10]
+    prepare_calendar(month_next, space)
+  end
+
+  def prepare_previous(date,space)
+    month_previous = Date.parse(date).prev_month.to_s[0,10]
+    puts month_previous
+    puts '======'
+    prepare_calendar(month_previous, space)
   end
 end
